@@ -228,22 +228,22 @@ wd <- filter(d, weekday == "Weekday")
 we <- filter(d, weekday == "Weekend")
 
 wd <- group_by(wd, interval) %>%
-        summarise(steps = sum(steps, na.rm = TRUE))
+        summarise(steps = mean(steps, na.rm = TRUE))
 
 
 we <- group_by(we, interval) %>%
-        summarise(steps = sum(steps, na.rm = TRUE))
+        summarise(steps = mean(steps, na.rm = TRUE))
 
 wd_plot <- ggplot(data = wd, aes(x = interval, y = steps)) +
         geom_line(color = "black") +
-        ylim(0,9200) +
+        ylim(0,235) +
         labs(title = "Weekday") +
         labs(y = "Avg Steps per 5 minutes interval") +
         labs(x = "Minutes")
 
 we_plot <- ggplot(data = we, aes(x = interval, y = steps)) +
         geom_line(color = "red") +
-        ylim(0,9200) +
+        ylim(0,235) +
         labs(title = "Weekend") +
         labs(y = "Avg Steps per 5 minutes interval") +
         labs(x = "Minutes")
